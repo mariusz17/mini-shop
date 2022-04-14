@@ -71,3 +71,5 @@ adminButton.addEventListener(
 	"click",
 	() => (mainHtml.innerHTML = admin.render())
 );
+
+mainHtml.innerHTML = products.render();
