@@ -1,7 +1,11 @@
 class Basket {
 	constructor() {
-		this.items = [];
+		this.items = JSON.parse(localStorage.getItem("miniShopBasket")) || [];
 		this.isOrderDisabled = true;
+	}
+
+	saveToLs() {
+		localStorage.setItem("miniShopBasket", JSON.stringify(this.items));
 	}
 
 	getTotalQty() {
@@ -18,14 +22,17 @@ class Basket {
 		} else {
 			this.items[index].qty += qty;
 		}
+		this.saveToLs();
 	}
 
 	remove(productId) {
 		this.items = this.items.filter((item) => item.id !== productId);
+		this.saveToLs();
 	}
 
 	sendOrder() {
-		this.items = [];
+		this.items.length = 0;
+		this.saveToLs();
 		window.alert("Zamówienie wysłane!");
 	}
 

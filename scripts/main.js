@@ -73,3 +73,4 @@ adminButton.addEventListener(
 );
 
 mainHtml.innerHTML = products.render();
+basketQtyStatus.textContent = `(${basket.getTotalQty()})`;
